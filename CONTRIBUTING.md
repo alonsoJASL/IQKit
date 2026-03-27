@@ -60,6 +60,19 @@ process opens. Your issue will not be closed — it will wait.
 All contributions to Monkey C source must comply with the rules in `DESIGN.md`. The checklist
 below is not exhaustive — `DESIGN.md` is the authority. This is a quick reference for reviewers.
 
+**On adding utility functions to the Foundation layer:**
+
+A function is not added to `IQKit.Geometry`, `IQKit.Layout`, or any other Tier 1 module
+because it seems useful or because one component needs it. It is added when three separate
+components have independently implemented the same logic. Before that threshold, the logic
+lives inside the component that needs it as a private `_` method. If you are proposing a
+new Foundation utility, your PR must name all three components that require it and show the
+duplicated code in each.
+
+This is not bureaucracy. A premature Foundation abstraction that turns out to be wrong must
+be changed across every component that depends on it. An over-hasty abstraction is more
+expensive than duplication.
+
 **Before opening a PR, verify:**
 
 - [ ] No heap allocation inside `draw()` or any method called by `draw()`
@@ -67,13 +80,22 @@ below is not exhaustive — `DESIGN.md` is the authority. This is a quick refere
       integers in `initialize()`
 - [ ] Component imports no data APIs (`Toybox.Activity`, `Toybox.Weather`, `Toybox.SensorHistory`,
       etc.)
-- [ ] `drawAod(dc)` implemented and producing ≤10% lit pixels if component emits light
+- [ ] `drawAod(dc)` implemented; produces ≤10% lit pixels if component emits light; no-op if
+      display-only — but the method must exist regardless
 - [ ] Dual-input: component is fully operable via UP/DOWN/ENTER/BACK without touch
 - [ ] All public symbols prefixed with `IQKit`
 - [ ] Internal symbols prefixed with `_`
-- [ ] Spec component ID present in file header comment (e.g. `// D-01 ArcProgressBar`)
-- [ ] Heap delta documented in the component's docstring
-- [ ] Python harness rendering reviewed before Monkey C implementation was started
+- [ ] Spec component ID, interface version, and heap delta present in file header comment
+- [ ] `update()` accepts a typed data class, not raw positional arguments, if more than two
+      values are required
+- [ ] `initialize()` uses a Builder or config data class if more than three configuration
+      values are required; Builder is in the same file as the component
+- [ ] Theme tokens are injected via `initialize()` — component does not call `IQKit.Theme`
+      directly
+- [ ] Python harness rendering reviewed and accepted before this Monkey C implementation
+      was started; harness covers full parameter range and AOD mode
+- [ ] New Foundation utility functions (Tier 1) cite the three independent use cases that
+      justify their existence
 
 ---
 

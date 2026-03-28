@@ -1,0 +1,74 @@
+[
+  {
+    "id": "fr970",
+    "name": "Forerunner 970",
+    "tier": 1,
+    "resolution": [454, 454],
+    "shape": "round",
+    "display": "amoled",
+    "touch": true,
+    "api_level": "8.x",
+    "color_depth": 16,
+    "heap_kb": 1024
+  },
+  {
+    "id": "fenix8_47",
+    "name": "Fenix 8 AMOLED 47mm",
+    "tier": 1,
+    "resolution": [416, 416],
+    "shape": "round",
+    "display": "amoled",
+    "touch": true,
+    "api_level": "7.x",
+    "color_depth": 16,
+    "heap_kb": 1024
+  },
+  {
+    "id": "venu3",
+    "name": "Venu 3",
+    "tier": 2,
+    "resolution": [390, 390],
+    "shape": "round",
+    "display": "amoled",
+    "touch": true,
+    "api_level": "6.x",
+    "color_depth": 16,
+    "heap_kb": 1024
+  },
+  {
+    "id": "fr265s",
+    "name": "Forerunner 265S",
+    "tier": 2,
+    "resolution": [360, 360],
+    "shape": "round",
+    "display": "amoled",
+    "touch": true,
+    "api_level": "6.x",
+    "color_depth": 16,
+    "heap_kb": 1024
+  },
+  {
+    "id": "instinct3_amoled",
+    "name": "Instinct 3 AMOLED",
+    "tier": 2,
+    "resolution": [390, 390],
+    "shape": "round",
+    "display": "amoled",
+    "touch": false,
+    "api_level": "7.x",
+    "color_depth": 16,
+    "heap_kb": 1024
+  },
+  {
+    "id": "fenix8_solar",
+    "name": "Fenix 8 Solar",
+    "tier": 3,
+    "resolution": [280, 280],
+    "shape": "round",
+    "display": "mip",
+    "touch": false,
+    "api_level": "7.x",
+    "color_depth": 8,
+    "heap_kb": 512
+  }
+]

@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# Harness snapshots (generated, not committed)
+harness/snapshots/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+
+CLAUDE.md
+.claude/
+.claude/**

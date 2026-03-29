@@ -23,3 +23,10 @@ using Toybox.Timer;
 // Source files in foundation/ are auto-included by the compiler when this
 // barrel is referenced. The using directives above make Toybox modules
 // available to all foundation code.
+
+// Tier 2 -- Components (Phase 1)
+// D-01: ArcProgressBar (single-value arc indicator, AOD variant)
+// D-03: CentreMetric (large value + unit label, AOD variant)
+// N-01: CircularMenu (radial item layout, max 8 items)
+// N-02: ArcList (chord-width constrained scrollable list)
+// N-05: ConfirmDialog (binary confirm/cancel, two-button layout)

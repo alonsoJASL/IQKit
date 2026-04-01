@@ -14,19 +14,19 @@ module IQKitLayout {
 
     // Compute the base layout unit from the device context.
     // For round screens: floor of dc width / 2.
-    function screenRadius(dc as Graphics.Dc) as Number {
+    function screenRadius(dc as Graphics.Dc) as Lang.Number {
         return (dc.getWidth() / 2).toNumber();
     }
 
     // Compute the screen centre point.
     // Returns: [cx, cy] as a 2-element Number array.
-    function screenCentre(dc as Graphics.Dc) as Array<Number> {
+    function screenCentre(dc as Graphics.Dc) as Lang.Array<Lang.Number> {
         return [dc.getWidth() / 2, dc.getHeight() / 2];
     }
 
     // Compute the bezel margin in pixels.
     // Default 5% of screen radius.
-    function safeAreaInset(radius as Number) as Number {
+    function safeAreaInset(radius as Lang.Number) as Lang.Number {
         var inset = (radius * 0.05).toNumber();
         if (inset < 1) {
             inset = 1;
@@ -36,7 +36,7 @@ module IQKitLayout {
 
     // Place an element at a polar coordinate.
     // Convenience wrapper over IQKitGeometry.polarToCartesian.
-    function radialPosition(cx as Number, cy as Number, radius as Number, angleDeg as Float) as Array<Number> {
+    function radialPosition(cx as Lang.Number, cy as Lang.Number, radius as Lang.Number, angleDeg as Lang.Float) as Lang.Array<Lang.Number> {
         return IQKitGeometry.polarToCartesian(cx, cy, radius, angleDeg);
     }
 }

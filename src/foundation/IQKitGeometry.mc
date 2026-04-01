@@ -21,7 +21,7 @@ module IQKitGeometry {
     //           270 = up (12 o'clock on a watch face).
     //
     // Returns: [x, y] as a 2-element Number array.
-    function polarToCartesian(cx as Number, cy as Number, r as Number, angleDeg as Float) as Array<Number> {
+    function polarToCartesian(cx as Lang.Number, cy as Lang.Number, r as Lang.Number, angleDeg as Lang.Float) as Lang.Array<Lang.Number> {
         var angleRad = Math.toRadians(angleDeg);
         var x = cx + (r * Math.cos(angleRad)).toNumber();
         var y = cy + (r * Math.sin(angleRad)).toNumber();
@@ -35,18 +35,18 @@ module IQKitGeometry {
     //
     // Returns: Array of [x, y] pairs.
     function arcPoints(
-        cx as Number,
-        cy as Number,
-        r as Number,
-        startDeg as Float,
-        endDeg as Float,
-        numSegments as Number
-    ) as Array< Array<Number> > {
+        cx as Lang.Number,
+        cy as Lang.Number,
+        r as Lang.Number,
+        startDeg as Lang.Float,
+        endDeg as Lang.Float,
+        numSegments as Lang.Number
+    ) as Lang.Array< Lang.Array<Lang.Number> > {
         if (numSegments < 1) {
             numSegments = 1;
         }
         var step = (endDeg - startDeg) / numSegments;
-        var points = new Array< Array<Number> >[numSegments + 1];
+        var points = new Lang.Array< Lang.Array<Lang.Number> >[numSegments + 1];
         for (var i = 0; i <= numSegments; i++) {
             points[i] = polarToCartesian(cx, cy, r, startDeg + i * step);
         }
@@ -60,18 +60,18 @@ module IQKitGeometry {
     //
     // Returns: Array of [x, y] pairs forming a closed polygon.
     function polygonFromArc(
-        cx as Number,
-        cy as Number,
-        rInner as Number,
-        rOuter as Number,
-        startDeg as Float,
-        endDeg as Float,
-        numSegments as Number
-    ) as Array< Array<Number> > {
+        cx as Lang.Number,
+        cy as Lang.Number,
+        rInner as Lang.Number,
+        rOuter as Lang.Number,
+        startDeg as Lang.Float,
+        endDeg as Lang.Float,
+        numSegments as Lang.Number
+    ) as Lang.Array< Lang.Array<Lang.Number> > {
         var outer = arcPoints(cx, cy, rOuter, startDeg, endDeg, numSegments);
         var inner = arcPoints(cx, cy, rInner, endDeg, startDeg, numSegments);
         var total = outer.size() + inner.size();
-        var polygon = new Array< Array<Number> >[total];
+        var polygon = new Lang.Array< Lang.Array<Lang.Number> >[total];
         for (var i = 0; i < outer.size(); i++) {
             polygon[i] = outer[i];
         }

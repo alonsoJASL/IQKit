@@ -13,13 +13,13 @@ using Toybox.Lang;
 
 class IQKitThemeTokens {
     // Colours as Graphics colour constants (0xRRGGBB).
-    var primaryColor as Number;
-    var secondaryColor as Number;
-    var background as Number;
-    var textColor as Number;
-    var accent as Number;
-    var warning as Number;
-    var dimColor as Number;  // AOD low-brightness colour
+    var primaryColor as Lang.Number;
+    var secondaryColor as Lang.Number;
+    var background as Lang.Number;
+    var textColor as Lang.Number;
+    var accent as Lang.Number;
+    var warning as Lang.Number;
+    var dimColor as Lang.Number;  // AOD low-brightness colour
 
     // Font sizes as fractions of screenRadius.
     // Caller resolves to pixel integers at initialize() time.
@@ -32,13 +32,13 @@ class IQKitThemeTokens {
     var strokeWeightThin as Float;
 
     function initialize(options as {
-        :primaryColor as Number,
-        :secondaryColor as Number,
-        :background as Number,
-        :textColor as Number,
-        :accent as Number,
-        :warning as Number,
-        :dimColor as Number,
+        :primaryColor as Lang.Number,
+        :secondaryColor as Lang.Number,
+        :background as Lang.Number,
+        :textColor as Lang.Number,
+        :accent as Lang.Number,
+        :warning as Lang.Number,
+        :dimColor as Lang.Number,
         :fontSizeLarge as Float,
         :fontSizeMedium as Float,
         :fontSizeSmall as Float,

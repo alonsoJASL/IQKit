@@ -28,14 +28,14 @@ enum IQKitInputAction {
 class IQKitInputEvent {
     var inputType as IQKitInputType;
     var action as IQKitInputAction;
-    var x as Number or Null;  // Pixel coordinate, TAP events only.
-    var y as Number or Null;
+    var x as Lang.Number or Null;  // Pixel coordinate, TAP events only.
+    var y as Lang.Number or Null;
 
     function initialize(
         inputType as IQKitInputType,
         action as IQKitInputAction,
-        x as Number or Null,
-        y as Number or Null
+        x as Lang.Number or Null,
+        y as Lang.Number or Null
     ) {
         self.inputType = inputType;
         self.action = action;
@@ -48,8 +48,8 @@ class IQKitInputEvent {
 // component. Components register via addTarget(). The router tracks focus
 // and routes events.
 class IQKitInputRouter {
-    var _targets as Array;
-    var _focusIndex as Number;
+    var _targets as Lang.Array;
+    var _focusIndex as Lang.Number;
 
     function initialize() {
         _targets = [];
@@ -66,7 +66,7 @@ class IQKitInputRouter {
     }
 
     // Move focus by delta positions (wraps around).
-    function moveFocus(delta as Number) as Void {
+    function moveFocus(delta as Lang.Number) as Void {
         var count = _targets.size();
         if (count == 0) {
             return;

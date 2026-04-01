@@ -1,0 +1,7 @@
+project.manifest = manifest.xml
+
+# IQKit source — sourcePath is not recursive, list all three tiers.
+base.sourcePath = $(base.sourcePath);../../src;../../src/foundation;../../src/components
+
+# App source.
+base.sourcePath = $(base.sourcePath);source

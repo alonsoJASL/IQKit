@@ -5,8 +5,9 @@
 // Include this in your project's jungle file to pull in all IQKit modules.
 //
 // Usage in a Monkey C project:
-//   Add IQKit as a barrel dependency in your monkey.jungle:
-//   base.barrelPath = $(base.barrelPath);../IQKit/src
+//   IQKit ships as source. Add all three tiers to sourcePath in monkey.jungle
+//   (sourcePath is non-recursive):
+//   base.sourcePath = $(base.sourcePath);../IQKit/src;../IQKit/src/foundation;../IQKit/src/components
 
 using Toybox.Lang;
 using Toybox.Math;

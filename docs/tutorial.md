@@ -489,3 +489,8 @@ background ring with CentreMetric showing the numeric value in the centre.
 - `update()` is where data changes happen. Never mutate component state
   directly -- always go through `update()` so the component can recompute
   any derived geometry (like the fill polygon in ArcProgressBar).
+
+## Notice
+Once downloaded, the SDK will be in: 
++ Linux: `$HOME/.Garmin/ConnectIQ/` 
++ MacOS: `$HOME/Library/Application Support/Garmin/ConnectIQ`

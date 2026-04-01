@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<iq:manifest xmlns:iq="http://www.garmin.com/xml/connectiq" version="3">
+    <iq:application
+        entry="IQKitTestApp"
+        id="a4b8c2d6e1394f87a2359d3b17c580e1"
+        launcherIcon="@Drawables.LauncherIcon"
+        minSdkVersion="6.0.0"
+        name="@Strings.AppName"
+        type="watchface"
+        version="1.0.0">
+        <iq:products>
+            <iq:product id="fr970"/>
+            <iq:product id="fenix847mm"/>
+        </iq:products>
+        <iq:permissions/>
+        <iq:languages>
+            <iq:language>eng</iq:language>
+        </iq:languages>
+        <iq:barrels/>
+    </iq:application>
+</iq:manifest>

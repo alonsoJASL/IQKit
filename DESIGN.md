@@ -300,7 +300,7 @@ in the implementation file header. This makes spec-to-code traceability explicit
 
 ## 8. Component Interface Contract
 
-Every IQKit component — without exception — exposes the following four-method public interface.
+Every IQKit component — without exception — exposes the following five-method public interface.
 This is the single source of truth for what a component is. Anything that does not implement
 this interface is not a component; it is either a utility function (belongs in `IQKit.Geometry`
 or `IQKit.Layout`) or an orchestration concern (belongs in the caller).
@@ -308,9 +308,17 @@ or `IQKit.Layout`) or an orchestration concern (belongs in the caller).
 ```monkeyc
 // IQKit Component Interface — mandatory for every component class
 
-// Called once at startup. Receives the device context to resolve pixel dimensions.
-// All heap allocation happens here. No allocation is permitted after this returns.
-function initialize(dc as Dc) as Void
+// Monkey C constructor. Called when the object is instantiated (new IQKitFoo()).
+// A Dc is not available at this point. Zero-initialise all instance variables here
+// so the object is in a defined state before initializeComponent() is called.
+// No allocation of rendering state — that belongs in initializeComponent().
+function initialize() as Void
+
+// Called from the orchestration layer's onLayout(dc) callback, when a Dc is first
+// available. Resolves all pixel dimensions from dc, stores theme tokens, and performs
+// all heap allocation for rendering state. No allocation is permitted after this returns.
+// config may be null — components must supply sensible defaults.
+function initializeComponent(dc as Dc, theme as IQKitThemeTokens, config as IQKitFooConfig or Null) as Void
 
 // Called by the orchestration layer when input data changes.
 // Mutates pre-allocated rendering state. No allocation permitted.
@@ -327,6 +335,35 @@ function draw(dc as Dc) as Void
 // this method as a no-op to satisfy the interface.
 function drawAod(dc as Dc) as Void
 ```
+
+**Why two initialisation steps?**
+
+Monkey C's `initialize()` method is the language constructor. It is called when the object
+is allocated, which happens in the orchestration layer's own `initialize()` — before
+`onLayout(dc)` fires and before a `Dc` is available. Pixel dimensions cannot be computed
+without a `Dc`, so a single `initialize(dc)` is not possible in practice.
+
+The two-step split maps directly onto the WatchFace and WatchApp lifecycle:
+
+```monkeyc
+// Orchestration layer — WatchFace or WatchApp
+
+function initialize() {
+    // Step 1: construct components — no Dc yet
+    _arc  = new IQKitArcProgressBar();
+    _menu = new IQKitCircularMenu();
+}
+
+function onLayout(dc as Dc) as Void {
+    // Step 2: resolve dimensions and allocate rendering state
+    _arc.initializeComponent(dc, _theme, null);
+    _menu.initializeComponent(dc, _theme, menuConfig, items);
+}
+```
+
+The no-allocation-after-init rule still holds — it applies to `initializeComponent()`, not
+to `initialize()`. `initialize()` may only zero instance variables; it must not compute
+geometry or allocate arrays sized from screen dimensions.
 
 **On `IQKitComponentData`:**
 
@@ -354,16 +391,22 @@ the Builder is a convenience layer over it, not a replacement.
 
 ```monkeyc
 // Direct construction — always available
+// In initialize():
+_gauge = new IQKitRadialGauge();
+
+// In onLayout(dc):
 var config = new IQKitRadialGaugeConfig(
     startAngle, endAngle, zoneColors, zoneThresholds, showNeedle, labelArray
 );
-var gauge = new IQKitRadialGauge(dc, config);
+_gauge.initializeComponent(dc, _theme, config);
 
 // Builder — encodes sensible defaults, overrides only what differs
-var gauge = new IQKitRadialGaugeBuilder(dc)
+// In onLayout(dc):
+var config = new IQKitRadialGaugeBuilder()
     .withZones([60, 100, 140, 170, 185], IQKitThemeTokens.HR_ZONE_COLORS)
     .withNeedle(true)
     .build();
+_gauge.initializeComponent(dc, _theme, config);
 ```
 
 Builders are Tier 2 artefacts. They belong in the same file as the component they configure,

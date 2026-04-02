@@ -140,12 +140,12 @@ class IQKitArcProgressBar {
     function draw(dc as Graphics.Dc) as Void {
         // Track (full background arc).
         dc.setColor(_trackColor, _background);
-        dc.fillPolygon(_trackPolygon);
+        dc.fillPolygon(_trackPolygon as Lang.Array<Graphics.Point2D>);
 
         // Fill (proportional arc).
         if (_fillPolygon.size() >= 3) {
             dc.setColor(_fillColor, _background);
-            dc.fillPolygon(_fillPolygon);
+            dc.fillPolygon(_fillPolygon as Lang.Array<Graphics.Point2D>);
         }
     }
 

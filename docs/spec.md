@@ -1,6 +1,6 @@
 # IQKit — Component Library Specification
-**Version:** 0.1-DRAFT  
-**Status:** Pre-implementation — scope review  
+**Version:** 0.2-DRAFT
+**Status:** Phase 1 simulator validation complete (FR970). Hardware and cross-device testing in progress.
 **Purpose:** Establish a shared, open-source Monkey C UI component library for Garmin Connect IQ
 devices, addressing the absence of native shared primitives in the Connect IQ SDK. The library is
 designed to be device-shape-agnostic; Phase 1 targets round screens exclusively, with rectangular
@@ -290,16 +290,17 @@ are the primary schedule risk.
 
 ## 8. Phased Delivery
 
-### Phase 0 — Harness and Foundation (weeks 1–2)
-T-01, T-02, F-01 through F-04.  
-Exit criterion: Python harness renders a circle, an arc, and a text label at correct scale for
-three target device profiles (454×454, 416×416, 390×390).
+### Phase 0 — Harness and Foundation (weeks 1–2) -- COMPLETE
+T-01, T-02, F-01 through F-04.
+Exit criterion met: Python harness renders all components at correct scale across fr970, fenix8_47,
+and venu3 profiles.
 
-### Phase 1 — Core components (weeks 3–6)
-D-01, D-03, N-01, N-02, N-05.  
-Exit criterion: `IQKit.CircularMenu` and `IQKit.ArcList` operate correctly in the CIQ simulator
-across at least three round-screen device profiles spanning different lines (e.g. FR970, Fenix 8,
-Venu 4), navigable by both touch and buttons.
+### Phase 1 — Core components (weeks 3–6) -- IN PROGRESS
+D-01, D-03, N-01, N-02, N-05. All components implemented and building.
+Reference watch face (`examples/reference-watchface/`) builds and runs in the CIQ simulator on
+fr970, fenix847mm, and vivoactive6.
+Exit criterion pending: validation across venu441mm and other level 6.0 device profiles, and
+confirmation of button + touch input on each.
 
 ### Phase 2 — Reference implementations (weeks 7–9)
 R-01, R-02, D-04, N-03.  

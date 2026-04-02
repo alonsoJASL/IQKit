@@ -23,13 +23,13 @@ class IQKitThemeTokens {
 
     // Font sizes as fractions of screenRadius.
     // Caller resolves to pixel integers at initialize() time.
-    var fontSizeLarge as Float;
-    var fontSizeMedium as Float;
-    var fontSizeSmall as Float;
+    var fontSizeLarge as Lang.Float;
+    var fontSizeMedium as Lang.Float;
+    var fontSizeSmall as Lang.Float;
 
     // Stroke weights as fractions of screenRadius.
-    var strokeWeightThick as Float;
-    var strokeWeightThin as Float;
+    var strokeWeightThick as Lang.Float;
+    var strokeWeightThin as Lang.Float;
 
     function initialize(options as {
         :primaryColor as Lang.Number,
@@ -39,11 +39,11 @@ class IQKitThemeTokens {
         :accent as Lang.Number,
         :warning as Lang.Number,
         :dimColor as Lang.Number,
-        :fontSizeLarge as Float,
-        :fontSizeMedium as Float,
-        :fontSizeSmall as Float,
-        :strokeWeightThick as Float,
-        :strokeWeightThin as Float
+        :fontSizeLarge as Lang.Float,
+        :fontSizeMedium as Lang.Float,
+        :fontSizeSmall as Lang.Float,
+        :strokeWeightThick as Lang.Float,
+        :strokeWeightThin as Lang.Float
     }) {
         primaryColor   = options.hasKey(:primaryColor)   ? options[:primaryColor]   : 0xFFFFFF;
         secondaryColor = options.hasKey(:secondaryColor) ? options[:secondaryColor] : 0xB4B4B4;

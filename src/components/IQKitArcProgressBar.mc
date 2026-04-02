@@ -12,20 +12,20 @@ using Toybox.Lang;
 using Toybox.Math;
 
 class IQKitArcProgressBarConfig {
-    var startAngle as Float;
-    var endAngle as Float;
-    var radiusFraction as Float;
-    var thicknessFraction as Float;
-    var trackColor as Number or Null;
-    var fillColor as Number or Null;
+    var startAngle as Lang.Float;
+    var endAngle as Lang.Float;
+    var radiusFraction as Lang.Float;
+    var thicknessFraction as Lang.Float;
+    var trackColor as Lang.Number or Null;
+    var fillColor as Lang.Number or Null;
 
     function initialize(options as {
-        :startAngle as Float,
-        :endAngle as Float,
-        :radiusFraction as Float,
-        :thicknessFraction as Float,
-        :trackColor as Number,
-        :fillColor as Number
+        :startAngle as Lang.Float,
+        :endAngle as Lang.Float,
+        :radiusFraction as Lang.Float,
+        :thicknessFraction as Lang.Float,
+        :trackColor as Lang.Number,
+        :fillColor as Lang.Number
     }) {
         startAngle        = options.hasKey(:startAngle)        ? options[:startAngle]        : 135.0f;
         endAngle          = options.hasKey(:endAngle)          ? options[:endAngle]          : 405.0f;
@@ -37,23 +37,23 @@ class IQKitArcProgressBarConfig {
 }
 
 class IQKitArcProgressBar {
-    var _cx as Number;
-    var _cy as Number;
-    var _rInner as Number;
-    var _rOuter as Number;
-    var _rMid as Number;
-    var _startAngle as Float;
-    var _endAngle as Float;
-    var _numSegments as Number;
-    var _trackPolygon as Array< Array<Number> >;
-    var _fillPolygon as Array< Array<Number> >;
-    var _trackColor as Number;
-    var _fillColor as Number;
-    var _dimColor as Number;
-    var _background as Number;
-    var _progress as Float;
-    var _markerX as Number;
-    var _markerY as Number;
+    var _cx as Lang.Number;
+    var _cy as Lang.Number;
+    var _rInner as Lang.Number;
+    var _rOuter as Lang.Number;
+    var _rMid as Lang.Number;
+    var _startAngle as Lang.Float;
+    var _endAngle as Lang.Float;
+    var _numSegments as Lang.Number;
+    var _trackPolygon as Lang.Array< Lang.Array<Lang.Number> >;
+    var _fillPolygon as Lang.Array< Lang.Array<Lang.Number> >;
+    var _trackColor as Lang.Number;
+    var _fillColor as Lang.Number;
+    var _dimColor as Lang.Number;
+    var _background as Lang.Number;
+    var _progress as Lang.Float;
+    var _markerX as Lang.Number;
+    var _markerY as Lang.Number;
 
     function initialize() {
         _cx = 0;
@@ -113,7 +113,7 @@ class IQKitArcProgressBar {
         _markerY = pos[1];
     }
 
-    function update(progress as Float) as Void {
+    function update(progress as Lang.Float) as Void {
         if (progress < 0.0) { progress = 0.0; }
         if (progress > 1.0) { progress = 1.0; }
         _progress = progress;

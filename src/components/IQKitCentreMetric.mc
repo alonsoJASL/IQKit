@@ -10,18 +10,18 @@ using Toybox.Graphics;
 using Toybox.Lang;
 
 class IQKitCentreMetric {
-    var _cx as Number;
-    var _cy as Number;
-    var _valueFontSize as Number;
-    var _unitFontSize as Number;
-    var _valueOffsetY as Number;
-    var _unitOffsetY as Number;
-    var _primaryColor as Number;
-    var _secondaryColor as Number;
-    var _dimColor as Number;
-    var _background as Number;
-    var _valueText as String;
-    var _unitText as String;
+    var _cx as Lang.Number;
+    var _cy as Lang.Number;
+    var _valueFontSize as Lang.Number;
+    var _unitFontSize as Lang.Number;
+    var _valueOffsetY as Lang.Number;
+    var _unitOffsetY as Lang.Number;
+    var _primaryColor as Lang.Number;
+    var _secondaryColor as Lang.Number;
+    var _dimColor as Lang.Number;
+    var _background as Lang.Number;
+    var _valueText as Lang.String;
+    var _unitText as Lang.String;
 
     function initialize() {
         _cx = 0;
@@ -58,7 +58,7 @@ class IQKitCentreMetric {
         _background = theme.background;
     }
 
-    function update(valueText as String, unitText as String) as Void {
+    function update(valueText as Lang.String, unitText as Lang.String) as Void {
         _valueText = valueText;
         _unitText = unitText;
     }

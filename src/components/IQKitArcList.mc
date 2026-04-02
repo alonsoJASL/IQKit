@@ -12,26 +12,26 @@ using Toybox.Lang;
 using Toybox.Math;
 
 class IQKitArcListItem {
-    var primaryText as String;
-    var secondaryText as String;
+    var primaryText as Lang.String;
+    var secondaryText as Lang.String;
 
-    function initialize(primaryText as String, secondaryText as String) {
+    function initialize(primaryText as Lang.String, secondaryText as Lang.String) {
         self.primaryText = primaryText;
         self.secondaryText = secondaryText;
     }
 }
 
 class IQKitArcListConfig {
-    var visibleItems as Number;
-    var itemHeightFraction as Float;
-    var insetFraction as Float;
-    var showScrollbar as Boolean;
+    var visibleItems as Lang.Number;
+    var itemHeightFraction as Lang.Float;
+    var insetFraction as Lang.Float;
+    var showScrollbar as Lang.Boolean;
 
     function initialize(options as {
-        :visibleItems as Number,
-        :itemHeightFraction as Float,
-        :insetFraction as Float,
-        :showScrollbar as Boolean
+        :visibleItems as Lang.Number,
+        :itemHeightFraction as Lang.Float,
+        :insetFraction as Lang.Float,
+        :showScrollbar as Lang.Boolean
     }) {
         visibleItems      = options.hasKey(:visibleItems)      ? options[:visibleItems]      : 5;
         itemHeightFraction = options.hasKey(:itemHeightFraction) ? options[:itemHeightFraction] : 0.12f;
@@ -43,27 +43,27 @@ class IQKitArcListConfig {
 class IQKitArcList {
     hidden const _MAX_VISIBLE = 7;
 
-    var _cx as Number;
-    var _cy as Number;
-    var _radius as Number;
-    var _itemHeight as Number;
-    var _visibleCount as Number;
-    var _inset as Number;
-    var _slotY as Array<Number>;
-    var _slotXLeft as Array<Number>;
-    var _slotXRight as Array<Number>;
-    var _slotWidth as Array<Number>;
-    var _items as Array<IQKitArcListItem>;
-    var _itemCount as Number;
-    var _scrollOffset as Number;
-    var _focusIndex as Number;
-    var _selectedIndex as Number;
-    var _showScrollbar as Boolean;
-    var _accent as Number;
-    var _textColor as Number;
-    var _secondaryColor as Number;
-    var _dimColor as Number;
-    var _background as Number;
+    var _cx as Lang.Number;
+    var _cy as Lang.Number;
+    var _radius as Lang.Number;
+    var _itemHeight as Lang.Number;
+    var _visibleCount as Lang.Number;
+    var _inset as Lang.Number;
+    var _slotY as Lang.Array<Lang.Number>;
+    var _slotXLeft as Lang.Array<Lang.Number>;
+    var _slotXRight as Lang.Array<Lang.Number>;
+    var _slotWidth as Lang.Array<Lang.Number>;
+    var _items as Lang.Array<IQKitArcListItem>;
+    var _itemCount as Lang.Number;
+    var _scrollOffset as Lang.Number;
+    var _focusIndex as Lang.Number;
+    var _selectedIndex as Lang.Number;
+    var _showScrollbar as Lang.Boolean;
+    var _accent as Lang.Number;
+    var _textColor as Lang.Number;
+    var _secondaryColor as Lang.Number;
+    var _dimColor as Lang.Number;
+    var _background as Lang.Number;
 
     function initialize() {
         _cx = 0;
@@ -72,10 +72,10 @@ class IQKitArcList {
         _itemHeight = 0;
         _visibleCount = 0;
         _inset = 0;
-        _slotY = new Array<Number>[_MAX_VISIBLE];
-        _slotXLeft = new Array<Number>[_MAX_VISIBLE];
-        _slotXRight = new Array<Number>[_MAX_VISIBLE];
-        _slotWidth = new Array<Number>[_MAX_VISIBLE];
+        _slotY = new Lang.Array<Lang.Number>[_MAX_VISIBLE];
+        _slotXLeft = new Lang.Array<Lang.Number>[_MAX_VISIBLE];
+        _slotXRight = new Lang.Array<Lang.Number>[_MAX_VISIBLE];
+        _slotWidth = new Lang.Array<Lang.Number>[_MAX_VISIBLE];
         for (var i = 0; i < _MAX_VISIBLE; i++) {
             _slotY[i] = 0;
             _slotXLeft[i] = 0;
@@ -151,7 +151,7 @@ class IQKitArcList {
         _selectedIndex = -1;
     }
 
-    function update(items as Array<IQKitArcListItem>) as Void {
+    function update(items as Lang.Array<IQKitArcListItem>) as Void {
         _items = items;
         _itemCount = items.size();
         _scrollOffset = 0;
@@ -248,11 +248,11 @@ class IQKitArcList {
         }
     }
 
-    function getSelectedIndex() as Number {
+    function getSelectedIndex() as Lang.Number {
         return _selectedIndex;
     }
 
-    hidden function _hitTest(tapX as Number, tapY as Number) as Number {
+    hidden function _hitTest(tapX as Lang.Number, tapY as Lang.Number) as Lang.Number {
         for (var slot = 0; slot < _visibleCount; slot++) {
             var itemIdx = _scrollOffset + slot;
             if (itemIdx >= _itemCount) {

@@ -10,24 +10,24 @@ using Toybox.Graphics;
 using Toybox.Lang;
 
 class IQKitCircularMenuItem {
-    var label as String;
+    var label as Lang.String;
 
-    function initialize(label as String) {
+    function initialize(label as Lang.String) {
         self.label = label;
     }
 }
 
 class IQKitCircularMenuConfig {
-    var itemRadiusFraction as Float;
-    var ringRadiusFraction as Float;
-    var startAngle as Float;
-    var title as String;
+    var itemRadiusFraction as Lang.Float;
+    var ringRadiusFraction as Lang.Float;
+    var startAngle as Lang.Float;
+    var title as Lang.String;
 
     function initialize(options as {
-        :itemRadiusFraction as Float,
-        :ringRadiusFraction as Float,
-        :startAngle as Float,
-        :title as String
+        :itemRadiusFraction as Lang.Float,
+        :ringRadiusFraction as Lang.Float,
+        :startAngle as Lang.Float,
+        :title as Lang.String
     }) {
         itemRadiusFraction = options.hasKey(:itemRadiusFraction) ? options[:itemRadiusFraction] : 0.12f;
         ringRadiusFraction = options.hasKey(:ringRadiusFraction) ? options[:ringRadiusFraction] : 0.52f;
@@ -39,29 +39,29 @@ class IQKitCircularMenuConfig {
 class IQKitCircularMenu {
     hidden const _MAX_ITEMS = 8;
 
-    var _cx as Number;
-    var _cy as Number;
-    var _itemX as Array<Number>;
-    var _itemY as Array<Number>;
-    var _labels as Array<String>;
-    var _itemCount as Number;
-    var _itemRadius as Number;
-    var _centreRadius as Number;
-    var _title as String;
-    var _focusIndex as Number;
-    var _selectedIndex as Number;
-    var _accent as Number;
-    var _textColor as Number;
-    var _secondaryColor as Number;
-    var _dimColor as Number;
-    var _background as Number;
+    var _cx as Lang.Number;
+    var _cy as Lang.Number;
+    var _itemX as Lang.Array<Lang.Number>;
+    var _itemY as Lang.Array<Lang.Number>;
+    var _labels as Lang.Array<Lang.String>;
+    var _itemCount as Lang.Number;
+    var _itemRadius as Lang.Number;
+    var _centreRadius as Lang.Number;
+    var _title as Lang.String;
+    var _focusIndex as Lang.Number;
+    var _selectedIndex as Lang.Number;
+    var _accent as Lang.Number;
+    var _textColor as Lang.Number;
+    var _secondaryColor as Lang.Number;
+    var _dimColor as Lang.Number;
+    var _background as Lang.Number;
 
     function initialize() {
         _cx = 0;
         _cy = 0;
-        _itemX = new Array<Number>[_MAX_ITEMS];
-        _itemY = new Array<Number>[_MAX_ITEMS];
-        _labels = new Array<String>[_MAX_ITEMS];
+        _itemX = new Lang.Array<Lang.Number>[_MAX_ITEMS];
+        _itemY = new Lang.Array<Lang.Number>[_MAX_ITEMS];
+        _labels = new Lang.Array<Lang.String>[_MAX_ITEMS];
         for (var i = 0; i < _MAX_ITEMS; i++) {
             _itemX[i] = 0;
             _itemY[i] = 0;
@@ -84,7 +84,7 @@ class IQKitCircularMenu {
         dc as Graphics.Dc,
         theme as IQKitThemeTokens,
         config as IQKitCircularMenuConfig,
-        items as Array<IQKitCircularMenuItem>
+        items as Lang.Array<IQKitCircularMenuItem>
     ) as Void {
         var r = IQKitLayout.screenRadius(dc);
         var centre = IQKitLayout.screenCentre(dc);
@@ -119,7 +119,7 @@ class IQKitCircularMenu {
         _selectedIndex = -1;
     }
 
-    function update(items as Array<IQKitCircularMenuItem>) as Void {
+    function update(items as Lang.Array<IQKitCircularMenuItem>) as Void {
         var count = items.size();
         if (count > _itemCount) { count = _itemCount; }
         for (var i = 0; i < count; i++) {
@@ -195,11 +195,11 @@ class IQKitCircularMenu {
         }
     }
 
-    function getSelectedIndex() as Number {
+    function getSelectedIndex() as Lang.Number {
         return _selectedIndex;
     }
 
-    hidden function _hitTest(tapX as Number, tapY as Number) as Number {
+    hidden function _hitTest(tapX as Lang.Number, tapY as Lang.Number) as Lang.Number {
         var rSq = _itemRadius * _itemRadius;
         for (var i = 0; i < _itemCount; i++) {
             var dx = tapX - _itemX[i];

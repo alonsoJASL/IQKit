@@ -9,6 +9,12 @@ build/
 # Harness snapshots (generated, not committed)
 harness/snapshots/
 
+# Monkey C compiler output
+**/*.prg
+**/*.prg.debug.xml
+**/*.iq
+**/bin/
+
 # IDE
 .vscode/
 .idea/

@@ -15,22 +15,22 @@ const IQKIT_DIALOG_CONFIRM = 0;
 const IQKIT_DIALOG_CANCEL = 1;
 
 class IQKitConfirmDialogConfig {
-    var promptText as String;
-    var confirmLabel as String;
-    var cancelLabel as String;
-    var confirmAngle as Float;
-    var cancelAngle as Float;
-    var buttonRadiusFraction as Float;
-    var buttonDistanceFraction as Float;
+    var promptText as Lang.String;
+    var confirmLabel as Lang.String;
+    var cancelLabel as Lang.String;
+    var confirmAngle as Lang.Float;
+    var cancelAngle as Lang.Float;
+    var buttonRadiusFraction as Lang.Float;
+    var buttonDistanceFraction as Lang.Float;
 
     function initialize(options as {
-        :promptText as String,
-        :confirmLabel as String,
-        :cancelLabel as String,
-        :confirmAngle as Float,
-        :cancelAngle as Float,
-        :buttonRadiusFraction as Float,
-        :buttonDistanceFraction as Float
+        :promptText as Lang.String,
+        :confirmLabel as Lang.String,
+        :cancelLabel as Lang.String,
+        :confirmAngle as Lang.Float,
+        :cancelAngle as Lang.Float,
+        :buttonRadiusFraction as Lang.Float,
+        :buttonDistanceFraction as Lang.Float
     }) {
         promptText             = options.hasKey(:promptText)             ? options[:promptText]             : "Confirm?";
         confirmLabel           = options.hasKey(:confirmLabel)           ? options[:confirmLabel]           : "Yes";
@@ -43,25 +43,25 @@ class IQKitConfirmDialogConfig {
 }
 
 class IQKitConfirmDialog {
-    var _cx as Number;
-    var _cy as Number;
-    var _promptY as Number;
-    var _buttonRadius as Number;
-    var _confirmX as Number;
-    var _confirmY as Number;
-    var _cancelX as Number;
-    var _cancelY as Number;
-    var _promptText as String;
-    var _confirmLabel as String;
-    var _cancelLabel as String;
-    var _focusIndex as Number;
-    var _result as Number;
-    var _accent as Number;
-    var _warning as Number;
-    var _textColor as Number;
-    var _secondaryColor as Number;
-    var _dimColor as Number;
-    var _background as Number;
+    var _cx as Lang.Number;
+    var _cy as Lang.Number;
+    var _promptY as Lang.Number;
+    var _buttonRadius as Lang.Number;
+    var _confirmX as Lang.Number;
+    var _confirmY as Lang.Number;
+    var _cancelX as Lang.Number;
+    var _cancelY as Lang.Number;
+    var _promptText as Lang.String;
+    var _confirmLabel as Lang.String;
+    var _cancelLabel as Lang.String;
+    var _focusIndex as Lang.Number;
+    var _result as Lang.Number;
+    var _accent as Lang.Number;
+    var _warning as Lang.Number;
+    var _textColor as Lang.Number;
+    var _secondaryColor as Lang.Number;
+    var _dimColor as Lang.Number;
+    var _background as Lang.Number;
 
     function initialize() {
         _cx = 0;
@@ -125,7 +125,7 @@ class IQKitConfirmDialog {
         _result = IQKIT_DIALOG_PENDING;
     }
 
-    function update(promptText as String) as Void {
+    function update(promptText as Lang.String) as Void {
         _promptText = promptText;
     }
 
@@ -169,11 +169,11 @@ class IQKitConfirmDialog {
         }
     }
 
-    function getResult() as Number {
+    function getResult() as Lang.Number {
         return _result;
     }
 
-    hidden function _hitTest(tapX as Number, tapY as Number) as Number or Null {
+    hidden function _hitTest(tapX as Lang.Number, tapY as Lang.Number) as Lang.Number or Null {
         var rSq = _buttonRadius * _buttonRadius;
         var dx = tapX - _confirmX;
         var dy = tapY - _confirmY;
@@ -190,11 +190,11 @@ class IQKitConfirmDialog {
 
     hidden function _drawButton(
         dc as Graphics.Dc,
-        bx as Number,
-        by as Number,
-        label as String,
-        ringColor as Number,
-        focused as Boolean
+        bx as Lang.Number,
+        by as Lang.Number,
+        label as Lang.String,
+        ringColor as Lang.Number,
+        focused as Lang.Boolean
     ) as Void {
         // Filled background.
         dc.setColor(_background, _background);

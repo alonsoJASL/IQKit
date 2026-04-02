@@ -51,7 +51,7 @@ class IQKitTestView extends WatchUi.WatchFace {
     hidden var _menu    as IQKitCircularMenu;
     hidden var _list    as IQKitArcList;
     hidden var _dialog  as IQKitConfirmDialog;
-    hidden var _mode    as Number;  // 0=face  1=menu  2=list  3=dialog
+    hidden var _mode    as Lang.Number;  // 0=face  1=menu  2=list  3=dialog
 
     function initialize() {
         WatchFace.initialize();
@@ -80,7 +80,7 @@ class IQKitTestView extends WatchUi.WatchFace {
             new IQKitCircularMenuItem("Bike"),
             new IQKitCircularMenuItem("Swim"),
             new IQKitCircularMenuItem("Hike"),
-        ] as Array<IQKitCircularMenuItem>;
+        ] as Lang.Array<IQKitCircularMenuItem>;
         _menu.initializeComponent(
             dc, _theme,
             new IQKitCircularMenuConfig({:title => "Start"}),
@@ -95,7 +95,7 @@ class IQKitTestView extends WatchUi.WatchFace {
             new IQKitArcListItem("Evening Walk",      "1.8 km"),
             new IQKitArcListItem("Swim Session",      "1500 m"),
             new IQKitArcListItem("Strength Training", "45 min"),
-        ] as Array<IQKitArcListItem>;
+        ] as Lang.Array<IQKitArcListItem>;
         _list.update(listItems);
 
         // N-05 ConfirmDialog.
@@ -126,7 +126,7 @@ class IQKitTestView extends WatchUi.WatchFace {
     }
 
     // Called by IQKitTestDelegate. Returns true if the event was consumed.
-    function onInputKey(keyEvent as WatchUi.KeyEvent) as Boolean {
+    function onInputKey(keyEvent as WatchUi.KeyEvent) as Lang.Boolean {
         var key = keyEvent.getKey();
 
         // Face mode: three buttons map to the three interactive components.
@@ -189,7 +189,7 @@ class IQKitTestDelegate extends WatchUi.WatchFaceDelegate {
         _view = view;
     }
 
-    function onKeyPressed(keyEvent as WatchUi.KeyEvent) as Boolean {
+    function onKeyPressed(keyEvent as WatchUi.KeyEvent) as Lang.Boolean {
         return _view.onInputKey(keyEvent);
     }
 }

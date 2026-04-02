@@ -18,4 +18,4 @@ A Monkey C UI component library for Garmin Connect IQ round-screen devices.
 
 ## Source
 
-- [GitHub Repository](https://github.com/josealonsosolis-lemus/IQKit)
+- [GitHub Repository](https://github.com/alonsoJASL/IQKit)

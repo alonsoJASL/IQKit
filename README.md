@@ -160,8 +160,7 @@ The gap IQKit fills has been documented but not closed:
 - [bombsimon/awesome-garmin](https://github.com/bombsimon/awesome-garmin) — the community
   project index. No entry for a UI component library.
 - [Connect IQ developer forum](https://forums.garmin.com/developer/connect-iq/f/discussion/275853/sample-apps-of-existing-ui-functionality)
-  — a developer explicitly names the missing abstraction: "UI components need more ways to
-  inspect them."
+  — a developer explicitly names the missing abstraction: "any plans of developing some of the built-in apps... to demonstrate the best way to render the UI in a clean way "
 
 Full analysis is in [docs/spec.md](docs/spec.md#11-prior-art-and-landscape-survey).
 

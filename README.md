@@ -159,7 +159,7 @@ The gap IQKit fills has been documented but not closed:
   contract, no coordinate-system abstraction, no form-factor design language.
 - [bombsimon/awesome-garmin](https://github.com/bombsimon/awesome-garmin) — the community
   project index. No entry for a UI component library.
-- [Connect IQ developer forum](https://forums.garmin.com/developer/connect-iq/f/discussion/303170/)
+- [Connect IQ developer forum](https://forums.garmin.com/developer/connect-iq/f/discussion/275853/sample-apps-of-existing-ui-functionality)
   — a developer explicitly names the missing abstraction: "UI components need more ways to
   inspect them."
 
